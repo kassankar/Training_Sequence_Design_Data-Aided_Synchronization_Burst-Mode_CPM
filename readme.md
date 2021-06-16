@@ -37,5 +37,5 @@ If you use this package for your own work, please consider citing it with [this 
 12. Select the section called __Modulated data__
     * select the required SNR values from `Snr`.
 ## License
-© 2020-2021 Karim Kasan
+© 2020-2021 Karim Kassan
 
