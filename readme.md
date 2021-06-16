@@ -1,5 +1,5 @@
 
-# Maximum Likelihood Synchronization of Burst-Mode CPM
+# Training Sequence Design for Data-Aided Synchronization of Burst-Mode CPM
 
 A Matlab code for the implementation of the cramer rao bound calculation by __Hosseini & Perrins__  for different types of CPM signals (GMSK-RECT-RC....). The details of the implementation can be obtained from this two papers: _"Training Sequence Design for Data-Aided Synchronization of Burst-Mode CPM"_ and _"The Cram´er-Rao Bound for Training Sequence Design for Burst-Mode CPM"_
 
