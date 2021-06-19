@@ -45,114 +45,17 @@ g_t        = K*g_t;
 q_t        = cumtrapz(g_t)*time_sa;  
 
 
-    case   4       
-t                      = 0:time_sa:pulse_length;
-g_t                    = 1/(2*pulse_length)*ones(1,length(t));
-g_t(1)                 = 0;
-% g_t(end)               = 0;
-K                      = 0.5/(sum(g_t)*time_sa);
-g_t                    = K*g_t;
-q_t                    = cumtrapz(g_t)*time_sa;
-    case 5
-
-t          = -pulse_length/2:time_sa:pulse_length/2;
-t0         = 0;
-g_t        = (2*w)./((t-t0).^2+w^2);              % Fix form w --> to w^2 (the error is compensated in the correcting factor)
-g_t        = g_t*(1/(4*pi));
-Cst        = sum(g_t)*time_sa;
-nug_t      = (0.5) / Cst;
-g_t        = nug_t*g_t;
-q_t        = cumtrapz(g_t)*time_sa; 
-
-
-    case 6 
-t          = -pulse_length/2:time_sa:pulse_length/2;
-t0         = 0;
-g_t        = (2*w)./((t-t0).^2+w^2);
-g_t        = g_t*(1/(4*pi));
-Cst        = sum(g_t)*time_sa;
-nug_t      = (0.5) / Cst;
-g_t        = nug_t*g_t;
-q_t        = cumtrapz(g_t)*time_sa;
-
-    case 7
-t          = -pulse_length/2:time_sa:pulse_length/2;
-t0         = 0;
-g_t        = (2*w)./((t-t0).^2+w^2);
-g_t        = g_t*(1/(4*pi));
-
-
-
-s         = 2.7;
-gauss      = exp(-(t.^2)./(2*s^2));
-
-
-
-
-g_t        = g_t.*gauss;
-Cst        = sum(g_t)*time_sa;
-nug_t      = (0.5) / Cst;
-g_t        = nug_t*g_t;
-q_t        = cumtrapz(g_t)*time_sa;
-
-    case 8
-t          = -pulse_length/2:time_sa:pulse_length/2;
-t_1        = (0:pulse_length_sa)*time_sa;
-t0         = 0;
-g_t        = (2*w)./((t-t0).^2+w^2);
-g_t        = g_t*(1/(4*pi));
-
-
-
-BT        = 0.3;
-s         = 2.7;
-alpha       = 2*pi*BT/(sqrt(log(2)));
-% gauss       = qfunc(alpha*(t-0.5)) - qfunc(alpha*(t+0.5));
-gauss      = exp(-(t.^2)./(2*s^2));
-rec        = 1/(2*pulse_length*1).*(1- cos(2*pi.*t_1/(pulse_length*1)));
-
-
-g_t        = g_t.*gauss;
-Cst        = sum(g_t)*time_sa;
-nug_t      = (0.5) / Cst;
-g_t        = nug_t*g_t;
-q_t        = cumtrapz(g_t)*time_sa;
-    case 9
-
-t          = 0.0000000001:time_sa:pulse_length/2;
-g_t        = 1/(pulse_length)*(sin(2*pi*t/(pulse_length))./(2*pi*t/pulse_length)).*(cos(2*pi*t/pulse_length)./(1-4*(2*t/pulse_length).^2));
-g_t        = [flip(g_t) g_t(1) g_t];
-K          = 0.5/(sum(g_t)*time_sa);
-g_t        = K*g_t;
-q_t        = cumtrapz(g_t)*time_sa;
-
-% t           = [flip(t) t];
-    case 10
-t          = -pulse_length/2:time_sa:pulse_length/2;
-t0         = 0;
-g_t        = (2*w)./((t-t0).^2+w^2);              % Fix form w --> to w^2 (the error is compensated in the correcting factor)
-g_t        = g_t*(1/(4*pi));
-s          = 1.37;
-gauss      = exp(-(t.^2)./(2*s^2));
-gauss      = gauss*(1/(4*pi));
-g_t        = gauss.*g_t;
-% Cst        = 0.5/(sum(g_t)*time_sa); 
-% g_t        = Cst*gauss;
-Cst        = sum(g_t)*time_sa;
-nug_t      = (0.5) / Cst;
-g_t        = nug_t*g_t;
-q_t        = cumtrapz(g_t)*time_sa;
-
-case 11
-   t          = 0:time_sa:pulse_length;
-   g_t        = rcosdesign(1,pulse_length,freq_sa);
-   cst        = 0.5/(sum(g_t)*time_sa);
-   g_t        = cst*g_t;
-   q_t        = cumtrapz(g_t)*time_sa;  
-
-
+     case   4
+        t                      = 0:time_sa:pulse_length;
+        g_t                    = 1/(2*pulse_length)*ones(1,length(t));
+        g_t(1)                 = 0;
+        g_t(end)               = 0;
+        K                      = 0.5/(sum(g_t)*time_sa);
+        g_t                    = K*g_t;
+        q_t                    = cumtrapz(g_t)*time_sa;
+        
     otherwise
-        disp('no pulses for >4')
+        disp('no pulses for pulse >4')
 end
 
 
