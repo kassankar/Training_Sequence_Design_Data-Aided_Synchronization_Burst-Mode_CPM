@@ -46,13 +46,13 @@ q_t        = cumtrapz(g_t)*time_sa;
 
 
      case   4
-        t                      = 0:time_sa:pulse_length;
-        g_t                    = 1/(2*pulse_length)*ones(1,length(t));
-        g_t(1)                 = 0;
-        g_t(end)               = 0;
-        K                      = 0.5/(sum(g_t)*time_sa);
-        g_t                    = K*g_t;
-        q_t                    = cumtrapz(g_t)*time_sa;
+t                      = 0:time_sa:pulse_length;
+g_t                    = 1/(2*pulse_length)*ones(1,length(t));
+g_t(1)                 = 0;
+g_t(end)               = 0;
+K                      = 0.5/(sum(g_t)*time_sa);
+g_t                    = K*g_t;
+q_t                    = cumtrapz(g_t)*time_sa;
         
     otherwise
         disp('no pulses for pulse >4')
